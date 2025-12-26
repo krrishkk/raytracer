@@ -54,10 +54,10 @@ RM = /opt/homebrew/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /Users/krrishk/CLionProjects/untitled
+CMAKE_SOURCE_DIR = /Users/krrishk/raytracer
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /Users/krrishk/CLionProjects/untitled/build
+CMAKE_BINARY_DIR = /Users/krrishk/raytracer/build
 
 #=============================================================================
 # Directory level rules for the build root directory
@@ -85,14 +85,14 @@ clean: CMakeFiles/untitled.dir/clean
 CMakeFiles/untitled.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/untitled.dir/build.make CMakeFiles/untitled.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/untitled.dir/build.make CMakeFiles/untitled.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/krrishk/CLionProjects/untitled/build/CMakeFiles --progress-num=1,2 "Built target untitled"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/krrishk/raytracer/build/CMakeFiles --progress-num=1,2 "Built target untitled"
 .PHONY : CMakeFiles/untitled.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/untitled.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/krrishk/CLionProjects/untitled/build/CMakeFiles 2
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/krrishk/raytracer/build/CMakeFiles 2
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/untitled.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/krrishk/CLionProjects/untitled/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/krrishk/raytracer/build/CMakeFiles 0
 .PHONY : CMakeFiles/untitled.dir/rule
 
 # Convenience name for target.
@@ -102,7 +102,7 @@ untitled: CMakeFiles/untitled.dir/rule
 # codegen rule for target.
 CMakeFiles/untitled.dir/codegen:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/untitled.dir/build.make CMakeFiles/untitled.dir/codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/krrishk/CLionProjects/untitled/build/CMakeFiles --progress-num=1,2 "Finished codegen for target untitled"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/krrishk/raytracer/build/CMakeFiles --progress-num=1,2 "Finished codegen for target untitled"
 .PHONY : CMakeFiles/untitled.dir/codegen
 
 # clean rule for target.

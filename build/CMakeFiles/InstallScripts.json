@@ -1,7 +1,7 @@
 {
 	"InstallScripts" : 
 	[
-		"/Users/krrishk/CLionProjects/untitled/build/cmake_install.cmake"
+		"/Users/krrishk/raytracer/build/cmake_install.cmake"
 	],
 	"Parallel" : false
 }

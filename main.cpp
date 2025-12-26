@@ -4,6 +4,7 @@
 #include "hittable_list.h"
 #include "camera.h"
 #include "material.h"
+#include <chrono>
 int main() {
     hittable_list world;
    auto ground_material = make_shared<lambertian>(color(0.5, 0.5, 0.5));
@@ -61,5 +62,10 @@ int main() {
     cam.defocus_angle = 0.6;
     cam.focus_dist    = 10.0;
 
+    auto start = std::chrono::high_resolution_clock::now();
     cam.render(world);
+    auto end = std::chrono::high_resolution_clock::now();
+
+    auto duration = std::chrono::duration_cast<std::chrono::seconds>(end-start);
+    std::cerr << "\n Render Time: " << duration.count() << " seconds";
 }

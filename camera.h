@@ -7,6 +7,9 @@
 #include "hittable.h"
 #include "vec3.h"
 #include "material.h"
+#include <thread>
+#include <mutex>
+
 class camera {
   public:
     double aspect_ratio = 1.0;  // Ratio of image width over height
@@ -19,24 +22,37 @@ class camera {
     vec3 vup = vec3(0,1,0);
     double defocus_angle = 0;
     double focus_dist = 10;
-    void render(const hittable& world) {
-        initialize();
 
-        std::cout << "P3\n" << img_w << ' ' << img_h << "\n255\n";
-
-        for (int j = 0; j < img_h; j++) {
-            std::clog << "\rScanlines remaining: " << (img_h - j) << ' ' << std::flush;
+    void render_rows(int rowStart, int rowEnd, const hittable& world, std::vector<color>& buffer) {
+        for (int j = rowStart; j < rowEnd; j++) { 
             for (int i = 0; i < img_w; i++) {
-                color pixel_color = color(0, 0, 0);
+            // std::clog << "\033[" << index << ";0H" << "Thread " << index << " - Row: " << j << " / " << (rowEnd-1) << "     " << std::flush;
+                color pixel_color = color(0,0,0);
                 for (int sample = 0; sample < samples_per_pixel; sample++) {
-                    ray r = get_ray(i,j);
-                    pixel_color += ray_color(r,max_depth, world);
+                    ray r = get_ray(i, j); 
+                    pixel_color += ray_color(r, max_depth, world);
                 }
-                write_color(std::cout, pixel_samples_scale * pixel_color);
+                buffer[j * img_w + i] = pixel_samples_scale * pixel_color;                
             }
         }
+    }
 
-        std::clog << "\rDone.                 \n";
+    void render(const hittable& world) {
+        initialize();
+        std::vector<color> imgBuff(img_h*img_w);
+
+        std::cout << "P3\n" << img_w << ' ' << img_h << "\n255\n";
+        
+        std::vector<std::thread> threads;
+        int rowsPerThread = img_h / threadCount;
+        for (int i = 0; i < threadCount; i++) {
+            int sRow = i * rowsPerThread;
+            int eRow = (i == threadCount - 1) ? img_h : (i+1)*rowsPerThread;
+            threads.emplace_back(&camera::render_rows, this, sRow, eRow, std::ref(world), std::ref(imgBuff));
+        }
+
+        for (auto& t : threads) t.join();
+        for (const auto& pixel : imgBuff) write_color(std::cout, pixel);
     }
 
   private:
@@ -49,6 +65,7 @@ class camera {
     vec3   u,v,w;
     vec3 defocus_disk_u;
     vec3 defocus_disk_v;
+    std::mutex outMutex;
 
     void initialize() {
         img_h = int(img_w / aspect_ratio);
