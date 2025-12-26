@@ -14,8 +14,8 @@ class camera {
   public:
     double aspect_ratio = 1.0;  // Ratio of image width over height
     int    img_w  = 100;  // Rendered image width in pixel count
-    int samples_per_pixel = 1000;
-    int max_depth = 100;
+    int samples_per_pixel = 50;
+    int max_depth = 20;
     double vfov = 90;
     point3 lookfrom = point3(0,0,0);
     point3 lookat = point3(0,0,-1);

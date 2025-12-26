@@ -1,0 +1,3 @@
+/Users/krrishk/raytracer/CMakeFiles/untitled.dir
+/Users/krrishk/raytracer/CMakeFiles/edit_cache.dir
+/Users/krrishk/raytracer/CMakeFiles/rebuild_cache.dir
