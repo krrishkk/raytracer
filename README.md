@@ -27,7 +27,7 @@ Unlike simple tutorial code, this project includes profiling-driven enhancements
 
 ## Example Output
 
-<img src="image.jpg" alt="Ray Traced Scene" width="700"/>
+<img src="image.png" alt="Ray Traced Scene" width="700"/>
 
 ---
 
