@@ -1,3 +1,0 @@
-/Users/krrishk/raytracer/cmake-build-release/CMakeFiles/untitled.dir
-/Users/krrishk/raytracer/cmake-build-release/CMakeFiles/edit_cache.dir
-/Users/krrishk/raytracer/cmake-build-release/CMakeFiles/rebuild_cache.dir
